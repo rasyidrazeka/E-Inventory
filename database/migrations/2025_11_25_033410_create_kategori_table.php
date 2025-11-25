@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('log_aktifitas', function (Blueprint $table) {
+        Schema::create('kategori', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('aksi', 100);
-            $table->string('nama_tabel', 100);
-            $table->bigInteger('record_id');
+            $table->string('nama', 100)->unique();
             $table->text('deskripsi')->nullable();
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop('log_aktifitas');
+        Schema::dropIfExists('kategori');
     }
 };

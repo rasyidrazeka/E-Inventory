@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('log_aktifitas', function (Blueprint $table) {
+        Schema::create('produk_masuk', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('aksi', 100);
-            $table->string('nama_tabel', 100);
-            $table->bigInteger('record_id');
+            $table->unsignedBigInteger('produk_id');
+            $table->integer('qty');
+            $table->date('tanggal_masuk');
             $table->text('deskripsi')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('produk_id')->references('id')->on('produk');
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop('log_aktifitas');
+        Schema::dropIfExists('produk_masuk');
     }
 };

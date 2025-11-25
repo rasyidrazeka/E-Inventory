@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('log_aktifitas', function (Blueprint $table) {
+        Schema::create('prediksi_stok', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('aksi', 100);
-            $table->string('nama_tabel', 100);
-            $table->bigInteger('record_id');
-            $table->text('deskripsi')->nullable();
+            $table->unsignedBigInteger('produk_id');
+            $table->decimal('rata2_pemakaian_harian', 10, 2);
+            $table->date('prediksi_stok_habis');
+            $table->integer('saran_restok');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('produk_id')->references('id')->on('produk');
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop('log_aktifitas');
+        Schema::dropIfExists('prediksi_stok');
     }
 };
