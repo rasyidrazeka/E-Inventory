@@ -40,19 +40,17 @@
         <!-- Sidebar -->
         @include('layout.sidebar')
         <!-- End Sidebar -->
-
         <div class="main-panel">
             @include('layout.header')
-
             <div class="container">
                 <div class="page-inner">
                     @include('layout.breadcrumb')
                 </div>
             </div>
-
             @include('layout.footer')
         </div>
     </div>
+    
     <!--   Core JS Files   -->
     <script src="{{ asset('kaiadmin/assets/js/core/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('kaiadmin/assets/js/core/popper.min.js') }}"></script>
